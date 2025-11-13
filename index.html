@@ -1,372 +1,324 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKYLINK</title>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKYLINK — Sistema para Controle de Provedor</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <header class="cabeçalho">
+    <div class="logo">
+      <img src="imgs/logo.png" alt="logo">
+      <h6>Sistema para Controle de Provedor</h6>
+    </div>
 
-    <header class="cabeçalho">
-        <figure class="logo">
-            <img src="imgs/logo.png" alt="Logo">
-            <h6>Sistema para Controle de Provedor</h6>
-        </figure>
+    <nav class="menu-navegação">
+      <a href="#">Início</a>
+      <a href="#">Serviços</a>
+      <a href="#">Suporte</a>
 
-        <div class="menu-completo">
-            <nav class="menu-navegação">
-                <a href="#">Início</a>
-                <a href="#">Serviços</a>
-                <a href="#">Suporte</a>
-            </nav>
+      <button class="btn-login">Entrar</button>
+      <button id="btn-tema" class="btn-tema">
+        <i class='bx bx-moon'></i>
+      </button>
+    </nav>
+  </header>
 
-            <button class="botão-entrar">Entrar</button>
+  <main>
+    <section class="principal">
+      <div class="titulo-principal">
+        <h5>ACELERE SUA REALIDADE. VOE ALTO COM</h5>
+        <h1>SKYLINK</h1>
+      </div>
+      <img src="imgs/logo para inicio.png" alt="Logo inicial">
+    </section>
+
+    <section>
+      <h2>Gerenciamento de Usuários</h2>
+      <div class="controls">
+        <input type="text" placeholder="Pesquisar Cliente">
+        <a href="#cadastro-cliente" class="add">+ Novo Cliente</a>
+      </div>
+
+      <div class="tabela-usuarios">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Pagamento</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Maria Santos</td>
+              <td>012.345.678-99</td>
+              <td class="status-pago">Pago</td>
+              <td class="actions">
+
+                <i class='bx bx-pencil'></i>
+                <i class='bx bx-trash'></i>
+                <i class='bx bx-slider-alt'></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>João Silva</td>
+              <td>098.765.345-22</td>
+              <td class="status-pago">Pago</td>
+              <td class="actions">
+
+                <i class='bx bx-pencil'></i>
+                <i class='bx bx-trash'></i>
+                <i class='bx bx-slider-alt'></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Joice Alencar</td>
+              <td>347.896.098-77</td>
+              <td class="status-pendente">Pendente</td>
+              <td class="actions">
+
+                <i class='bx bx-pencil'></i>
+                <i class='bx bx-trash'></i>
+                <i class='bx bx-slider-alt'></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="cadastro-cliente">
+      <h2>Cadastro de Cliente</h2>
+      <h3>Dados pessoais</h3>
+      <div class="form-cadastro">
+        <div>
+          <label>Nome completo</label>
+          <input type="text" placeholder="Nome completo do cliente">
         </div>
-    </header>
-
-    <main>
-        <div class="titulo-principal">
-            <h5>acelere sua realidade. voe alto com</h5>
-            <h1>SKYLINK</h1>
+        <div>
+          <label>CPF/CNPJ</label>
+          <input type="text" placeholder="000.000.000-00">
         </div>
-    
-        <figure class="img-inicial">
-            <img src="imgs/logo para inicio.png" alt="">
-        </figure>
+        <div>
+          <label>Email</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
+        <div><label>Telefone</label>
+          <input type="tel" placeholder="(XX) 00000-0000">
+        </div>
+      </div>
 
-        <section class="gerenciamento-usuarios">
-            <h2>Gerenciamento de Usuários</h2>
+      <h3>Dados do contrato</h3>
+      <div class="form-cadastro">
+        <div>
+          <label>CEP</label>
+          <select>
+            <option>40000-000</option>
+            <option>50000-000</option>
+          </select>
+        </div>
+        <div>
+          <label>Rua/Bairro</label>
+          <input type="text" placeholder="Rua e Bairro">
+        </div>
+        <div>
+          <label>Número da casa</label>
+          <input type="number" placeholder="Número">
+        </div>
+        <div>
+          <label>Data inicial</label>
+          <input type="date">
+        </div>
+      </div>
 
-            <search id="busca">
-                <input type="text" id="input-busca" placeholder="Pesquisar Cliente">
-                <i class='bx  bx-search'  ></i> 
-                
-                <a href="#cadastro-cliente" id="add-cliente">+ Novo Cliente</a>
-            </search>
+      <button class="btn-cadastrar">Cadastrar Cliente</button>
+    </section>
 
-                <table class="tabela-usuarios">
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Pagamento</th>
-                        <th>Ações</th>
-                    </tr>
+    <section class="atualizacao-cadastro">
+      <h2>Atualização do Cadastro</h2>
+      <h3>Dados pessoais</h3>
+      <form class="form-atualizar">
+        <div>
+          <label>Nome completo</label>
+          <input name="nome" type="text" placeholder="Maria das Graças">
+        </div>
+        <div>
+          <label>CPF/CNPJ</label>
+          <input name="cpf/cnpj" type="number" placeholder="000.999.890-22" required>
+        </div>
+        <div>
+          <label>Email</label>
+          <input name="email" type="email" placeholder="mariagraca@example.com" required>
+        </div>
+        <div>
+          <label>Telefone</label>
+          <input name="tel" type="tel" placeholder="77 999800500">
+        </div>
+      </form>
 
-                    <tr>
-                        <td>Maria Santos</td>
-                        <td>012.345.678-99</td>
-                        <td>Pago</td>
-                        <td>
-                            <i class='bx  bx-pencil'></i> 
-                            <i class='bx  bx-trash'></i> 
-                            <i class='bx  bx-slider-alt'></i> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>João Silva</td>
-                        <td>098.765.345-22</td>
-                        <td>Pago</td>
-                        <td>
-                            <i class='bx  bx-pencil'></i> 
-                            <i class='bx  bx-trash'></i> 
-                            <i class='bx  bx-slider-alt'></i> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Joice Alencar</td>
-                        <td>347.896.098-77</td>
-                        <td>Pendente</td>
-                        <td>
-                            <i class='bx  bx-pencil'></i> 
-                            <i class='bx  bx-trash'></i> 
-                            <i class='bx  bx-slider-alt'></i> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Vitor Souza</td>
-                        <td>008.996.785-00</td>
-                        <td>Pendente</td>
-                        <td>
-                            <i class='bx  bx-pencil'></i> 
-                            <i class='bx  bx-trash'></i> 
-                            <i class='bx  bx-slider-alt'></i> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Lélia Coutinho</td>
-                        <td>667.897.000-33</td>
-                        <td>Pago</td>
-                        <td>
-                            <i class='bx  bx-pencil'></i> 
-                            <i class='bx  bx-trash'></i> 
-                            <i class='bx  bx-slider-alt'></i> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Josué Ferreira</td>
-                        <td>866.990.000-55</td>
-                        <td>Pago</td>
-                        <td>
-                            <i class='bx  bx-pencil'></i> 
-                            <i class='bx  bx-trash'></i> 
-                            <i class='bx  bx-slider-alt'></i> 
-                        </td>
-                    </tr>
-                </table>
-        </section>
+      <h3>Dados do contrato</h3>
+      <form class="form-atualizar">
+        <div>
+          <label>CEP</label>
+          <button>
+            <select name="cep">
+              <option value="valo1">46470000</option>
+            </select>
+          </button>
+        </div>
+        <div>
+          <label>Rua/Bairro</label>
+          <input name="rua/bairro" type="text" placeholder="Rua Avenida Brasil/ Divino">
+        </div>
+        <div>
+          <label>Número da casa</label>
+          <input name="num" type="number" placeholder="78">
+        </div>
+        <div>
+          <label>Data inicial</label>
+          <input name="data-inicial" type="date" placeholder="11/12/2012">
+        </div>
+        <div>
+          <label>Dia da fatura</label>
+          <input name="dia-fatura" type="text" placeholder="Todo mês dia 10">
+        </div>
+      </form>
 
-        <section class="cadastro-cliente" id="cadastro-cliente">
-            <h2>Cadastro de Cliente</h2>
+      <button class="btn-atualizar-cadastro">Atualizar Cadastro</button>
+    </section>
 
-            <h3>Dados pessoais</h3>
-            <form class="dados-pessoais">
-                <div class="input-box">
-                    <label for="nome">Nome completo</label>
-                    <input name="nome" type="text" placeholder="Nome completo do cliente">
-                </div>
-                
-                <div class="input-box">
-                    <label for="cpf/cnpj">CPF/CNPJ</label>
-                    <input name="cpf/cnpj" type="number" placeholder="000.000.000-00" required>
-                </div>
+    <section class="deletar-cadastro">
+      <h2>Deletar Cadastro</h2>
 
-                <div class="input-box">
-                    <label for="email">Email</label>
-                    <input name="email" type="email" placeholder="email@example.com" required>
-                </div>
+      <h3>Clientes Cadastrados</h3>
+      <table class="tabela-usuarios">
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+        <tr>
+          <td>Maria Santos</td>
+          <td>mariasantos@gmail.com</td>
+          <td>
+            <button id="btn-deletar">
+              <i class='bx  bx-trash'> Deletar</i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>João Silva</td>
+          <td>joaosilva@gmail.com</td>
+          <td>
+            <button id="btn-deletar">
+              <i class='bx  bx-trash'> Deletar</i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Joice Alencar</td>
+          <td>joicealencar@gmail.com</td>
+          <td>
+            <button id="btn-deletar">
+              <i class='bx  bx-trash'> Deletar</i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Vitor Souza</td>
+          <td>vitorsouza@gmail.com</td>
+          <td>
+            <button id="btn-deletar">
+              <i class='bx  bx-trash'> Deletar</i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Lélia Coutinho</td>
+          <td>leliacoutinho@gmail.com</td>
+          <td>
+            <button id="btn-deletar">
+              <i class='bx  bx-trash'> Deletar</i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Josué Ferreira</td>
+          <td>josueferreira@gmail.com</td>
+          <td>
+            <button id="btn-deletar">
+              <i class='bx  bx-trash'> Deletar</i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </section>
 
-                <div class="input-box">
-                    <label for="tel">Telefone</label>
-                    <input name="tel" type="tel" placeholder="(XX) 00000-0000">
-                </div>
-            </form>
+    <section class="info-plano">
+      <div>
+        <h2>Detalhes do Cliente</h2>
+        <div class="details">
+          <p><strong>Nome completo:</strong> Fulano da Silva Moura</p>
+          <p><strong>CPF/CNPJ:</strong> xxx.xxx.xxx-xx</p>
+          <p><strong>Email:</strong> silvamoura@example.com</p>
+          <p><strong>Telefone:</strong> (XX) 000000000</p>
+          <p><strong>Situação:</strong> Ativo</p>
+          <p><strong>Endereço:</strong> Rua ABC, 123, Rio de Janeiro</p>
+          <p><strong>Plano:</strong> 100 MBPS</p>
+        </div>
+      </div>
+      <div>
+        <h2>Informações do Plano</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Vencimento</th>
+              <th>Valor</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>15/11/25</td>
+              <td>R$80,00</td>
+              <td class="status-pago">Pago</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>15/12/25</td>
+              <td>R$80,00</td>
+              <td class="status-pendente">Pendente</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>15/01/25</td>
+              <td>R$80,00</td>
+              <td class="status-pendente">Pendente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-            <h3>Dados do contrato</h3>
-            <form class="dados-contrato">
-                <div class="input-box">
-                    <label for="cep">CEP</label>
-                    <button>
-                        <select name="cep">
-                            <option value="valor1">40000-000</option>
-                            <option value="valor2">60000-000</option>
-                            <option value="valor3">40000-000</option>
-                            <option value="valor4">49000-000</option>
-                            <option value="valor5">50000-000</option>
-                            <option value="valor6">57000-000</option>
-                            <option value="valor7">58000-000</option>
-                            <option value="valor8">59000-000</option>
-                        </select>
-                    </button>
-                   
-                </div>
-                
-                <div class="input-box">
-                    <label for="rua/bairro">Rua/Bairro</label>
-                    <input name="rua/bairro" type="text" placeholder="Rua e Bairro">
-                </div>
+  <footer>
+    <p>&copy; SKYLINK. Todos os direitos reservados.</p>
+  </footer>
 
-                <div class="input-box">
-                    <label for="num">Número da casa</label>
-                    <input name="num" type="number" placeholder="Número da Casa">
-                </div>
-
-                <div class="input-box">
-                    <label for="data-inicial">Data inicial</label>
-                    <input name="data-inicial" type="date" placeholder="Data inicial do contrato">
-                </div>
-
-                <div class="input-box">
-                    <label for="dia-fatura">Dia da fatura</label>
-                    <input name="dia-fatura" type="date" placeholder="Dia do pagamento">
-                </div>
-            </form>
-            <button class="button-cadastrar">Cadastrar Cliente</button>
-        </section>
-
-        <section class="atualizacao-cadastro">
-            <h2>Atualização do Cadastro</h2>
-
-            <h3>Dados pessoais</h3>
-            <form class="dados-pessoais">
-                <div class="input-box">
-                    <label for="nome">Nome completo</label>
-                    <input name="nome" type="text" placeholder="Maria das Graças">
-                </div>
-                
-                <div class="input-box">
-                    <label for="cpf/cnpj">CPF/CNPJ</label>
-                    <input name="cpf/cnpj" type="number" placeholder="000.999.890-22" required>
-                </div>
-
-                <div class="input-box">
-                    <label for="email">Email</label>
-                    <input name="email" type="email" placeholder="mariagraca@example.com" required>
-                </div>
-
-                <div class="input-box">
-                    <label for="tel">Telefone</label>
-                    <input name="tel" type="tel" placeholder="77 999800500">
-                </div>
-            </form>
-
-            <h3>Dados do contrato</h3>
-            <form class="dados-contrato">
-                <div class="input-box">
-                    <label for="cep">CEP</label>
-                    <button>
-                        <select name="cep">
-                            <option value="valo1">46470000</option>
-                        </select>
-                    </button>
-                   
-                </div>
-                
-                <div class="input-box">
-                    <label for="rua/bairro">Rua/Bairro</label>
-                    <input name="rua/bairro" type="text" placeholder="Rua Avenida Brasil/ Divino">
-                </div>
-
-                <div class="input-box">
-                    <label for="num">Número da casa</label>
-                    <input name="num" type="number" placeholder="78">
-                </div>
-
-                <div class="input-box">
-                    <label for="data-inicial">Data inicial</label>
-                    <input name="data-inicial" type="date" placeholder="11/12/2012">
-                </div>
-
-                <div class="input-box">
-                    <label for="dia-fatura">Dia da fatura</label>
-                    <input name="dia-fatura" type="text" placeholder="Todo mês dia 10">
-                </div>
-            </form>
-            <button class="button-atualizar-cadastro">Atualizar Cadastro</button>
-        </section>
-
-        <section class="deletar-cadastro">
-            <h2>Deletar Cadastro</h2>
-
-            <h3>Clientes Cadastrados</h3>
-            <table class="tabela-usuarios">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Ações</th>
-                    </tr>
-
-                    <tr>
-                        <td>Maria Santos</td>
-                        <td>mariasantos@gmail.com</td>
-                        <td>
-                            <button>
-                                <i class='bx  bx-trash'> Deletar</i> 
-                            </button>
-                           
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>João Silva</td>
-                        <td>joaosilva@gmail.com</td>
-                        <td>
-                             <button>
-                                <i class='bx  bx-trash'> Deletar</i> 
-                            </button>
-                          
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Joice Alencar</td>
-                        <td>joicealencar@gmail.com</td>
-                        <td>
-                            <button>
-                                <i class='bx  bx-trash'> Deletar</i> 
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Vitor Souza</td>
-                        <td>vitorsouza@gmail.com</td>
-                        <td>
-                            <button>
-                                <i class='bx  bx-trash'> Deletar</i> 
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Lélia Coutinho</td>
-                        <td>leliacoutinho@gmail.com</td>
-                        <td>
-                            <button>
-                                <i class='bx  bx-trash'> Deletar</i> 
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Josué Ferreira</td>
-                        <td>josueferreira@gmail.com</td>
-                        <td>
-                             <button>
-                                <i class='bx  bx-trash'> Deletar</i> 
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-        </section>
-
-        <section class="detalhes-cliente">
-            <h2>Detalhes do Cliente</h2>
-
-            <div class="detalhes">
-                <h3>Dados pessoais/Contratos</h3>
-
-                <p><strong>Nome completo </strong>Fulano da Silva Moura</p>
-                <p><strong>CPF/CBPJ </strong>xxx.xxx.xxx-xx</p>
-                <p><strong>Email </strong>silvamoura@example.com</p>
-                <p><strong>Telefone </strong>(XX) 000000000</p>
-                <p><strong>Situação do cliente </strong>Ativo</p>
-                <p><strong>Endereço de Instalação </strong>Rua ABC, 123, Rio de Janeiro</p>
-                <p><strong>Data de cadastro </strong>25 de dezembro de 2021</p>
-                <p><strong>Plano de contrato </strong>100 MBPS</p>
-            </div>
-        </section>
-
-        <section class="informacoes-plano">
-            <h2>Informações do Plano</h2>
-
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Vencimento</th>
-                    <th>Valor</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>15/11/25</td>
-                    <td>R$80,00</td>
-                    <td>Pago</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>15/12/25</td>
-                    <td>R$80,00</td>
-                    <td>Pendente</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>15/01/25</td>
-                    <td>R$80,00</td>
-                    <td>Pendente</td>
-                </tr>
-            </table>
-        </section>
-    </main>
-
-    <footer class="rodapé">
-        <p>&copy; SKYLINK. Todos os direitos reservados.</p>
-    </footer>
+  <script src="script.js"></script>
 </body>
+
 </html>
