@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,11 +21,11 @@
     </div>
 
     <nav class="menu-navegação">
-      <a href="#">Início</a>
+      <!-- <a href="#">Início</a>
       <a href="#">Serviços</a>
-      <a href="#">Suporte</a>
+      <a href="#">Suporte</a> -->
 
-      <button class="btn-login">Entrar</button>
+
       <button id="btn-tema" class="btn-tema">
         <i class='bx bx-moon'></i>
       </button>
@@ -43,7 +45,8 @@
       <h2>Gerenciamento de Usuários</h2>
       <div class="controls">
         <input type="text" placeholder="Pesquisar Cliente">
-        <a href="#cadastro-cliente" class="add">+ Novo Cliente</a>
+        <a href="#" data-toggle="modal" data-target="#modalCadastroCliente" class="add">+ Novo Cliente</a>
+      </div>
       </div>
 
       <div class="tabela-usuarios">
@@ -64,9 +67,10 @@
               <td class="status-pago">Pago</td>
               <td class="actions">
 
-                <i class='bx bx-pencil'></i>
-                <i class='bx bx-trash'></i>
-                <i class='bx bx-slider-alt'></i>
+                <a href="atualizacao.html"><i class='bx bx-pencil'></i></a>
+                <a href="#" data-toggle="modal" data-target="#modalDeletarCliente" class="remove"><i class='bx bx-trash'></i></a>
+                
+                <i class='bx  bx-form'></i>
               </td>
             </tr>
 
@@ -76,9 +80,9 @@
               <td class="status-pago">Pago</td>
               <td class="actions">
 
-                <i class='bx bx-pencil'></i>
+                <a href="atualizacao.html"><i class='bx bx-pencil'></i></a>
                 <i class='bx bx-trash'></i>
-                <i class='bx bx-slider-alt'></i>
+                <i class='bx  bx-finger-up'></i>
               </td>
             </tr>
 
@@ -88,9 +92,9 @@
               <td class="status-pendente">Pendente</td>
               <td class="actions">
 
-                <i class='bx bx-pencil'></i>
+                <a href="atualizacao.html"><i class='bx bx-pencil'></i></a>
                 <i class='bx bx-trash'></i>
-                <i class='bx bx-slider-alt'></i>
+                <i class='bx  bx-eye-alt'></i>
               </td>
             </tr>
           </tbody>
@@ -98,105 +102,66 @@
       </div>
     </section>
 
+    <!-- Modal de Cadastro de Cliente -->
     <section id="cadastro-cliente">
-      <h2>Cadastro de Cliente</h2>
-      <h3>Dados pessoais</h3>
-      <div class="form-cadastro">
-        <div>
-          <label>Nome completo</label>
-          <input type="text" placeholder="Nome completo do cliente">
-        </div>
-        <div>
-          <label>CPF/CNPJ</label>
-          <input type="text" placeholder="000.000.000-00">
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="email@example.com">
-        </div>
-        <div><label>Telefone</label>
-          <input type="tel" placeholder="(XX) 00000-0000">
+      <div class="modal fade" id="modalCadastroCliente" tabindex="-1" role="dialog"
+        aria-labelledby="modalCadastroClienteLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalCadastroClienteLabel">Cadastro de Cliente</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <h3>Dados pessoais</h3>
+                <div>
+                  <label>Nome completo</label>
+                  <input type="text" class="form-control" placeholder="Nome completo do cliente">
+                </div>
+                <div>
+                  <label>CPF/CNPJ</label>
+                  <input type="text" class="form-control" placeholder="000.000.000-00">
+                </div>
+                <div>
+                  <label>Email</label>
+                  <input type="email" class="form-control" placeholder="email@example.com">
+                </div>
+                <div>
+                  <label>Telefone</label>
+                  <input type="tel" class="form-control" placeholder="(XX) 00000-0000">
+                </div>
+
+                <h3>Dados do contrato</h3>
+                <div>
+                  <label>CEP</label>
+                  <input type="text" class="form-control" placeholder="CEP">
+                </div>
+                <div>
+                  <label>Rua/Bairro</label>
+                  <input type="text" class="form-control" placeholder="Rua e Bairro">
+                </div>
+                <div>
+                  <label>Número da casa</label>
+                  <input type="number" class="form-control" placeholder="Número">
+                </div>
+                <div>
+                  <label>Data inicial</label>
+                  <input type="date" class="form-control">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Cadastrar Cliente</button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <h3>Dados do contrato</h3>
-      <div class="form-cadastro">
-        <div>
-          <label>CEP</label>
-          <select>
-            <option>40000-000</option>
-            <option>50000-000</option>
-          </select>
-        </div>
-        <div>
-          <label>Rua/Bairro</label>
-          <input type="text" placeholder="Rua e Bairro">
-        </div>
-        <div>
-          <label>Número da casa</label>
-          <input type="number" placeholder="Número">
-        </div>
-        <div>
-          <label>Data inicial</label>
-          <input type="date">
-        </div>
-      </div>
-
-      <button class="btn-cadastrar">Cadastrar Cliente</button>
     </section>
 
-    <section class="atualizacao-cadastro">
-      <h2>Atualização do Cadastro</h2>
-      <h3>Dados pessoais</h3>
-      <form class="form-atualizar">
-        <div>
-          <label>Nome completo</label>
-          <input name="nome" type="text" placeholder="Maria das Graças">
-        </div>
-        <div>
-          <label>CPF/CNPJ</label>
-          <input name="cpf/cnpj" type="number" placeholder="000.999.890-22" required>
-        </div>
-        <div>
-          <label>Email</label>
-          <input name="email" type="email" placeholder="mariagraca@example.com" required>
-        </div>
-        <div>
-          <label>Telefone</label>
-          <input name="tel" type="tel" placeholder="77 999800500">
-        </div>
-      </form>
-
-      <h3>Dados do contrato</h3>
-      <form class="form-atualizar">
-        <div>
-          <label>CEP</label>
-          <button>
-            <select name="cep">
-              <option value="valo1">46470000</option>
-            </select>
-          </button>
-        </div>
-        <div>
-          <label>Rua/Bairro</label>
-          <input name="rua/bairro" type="text" placeholder="Rua Avenida Brasil/ Divino">
-        </div>
-        <div>
-          <label>Número da casa</label>
-          <input name="num" type="number" placeholder="78">
-        </div>
-        <div>
-          <label>Data inicial</label>
-          <input name="data-inicial" type="date" placeholder="11/12/2012">
-        </div>
-        <div>
-          <label>Dia da fatura</label>
-          <input name="dia-fatura" type="text" placeholder="Todo mês dia 10">
-        </div>
-      </form>
-
-      <button class="btn-atualizar-cadastro">Atualizar Cadastro</button>
-    </section>
 
     <section class="deletar-cadastro">
       <h2>Deletar Cadastro</h2>
@@ -318,6 +283,9 @@
     <p>&copy; SKYLINK. Todos os direitos reservados.</p>
   </footer>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
 </body>
 
