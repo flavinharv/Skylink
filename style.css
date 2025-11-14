@@ -364,3 +364,80 @@ body.dark .primary-action:hover {
     grid-template-columns: 1fr;
   }
 }
+
+.contato{
+  background-color: #dbe9f8; 
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.contato h1{
+  color:#000000;
+  padding:6px;
+  margin-bottom: 4px;
+}
+
+.contato button {
+  background-color: #0052a4;
+  color:white;
+  width: 100 px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.suporte {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.suporte h1 {
+  font-size: 32px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.suporte p {
+  font-size: 18px;
+  color: #0e0d0d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
+.ajuda {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.ajuda p {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #0078D4; 
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005a9e; 
+}
