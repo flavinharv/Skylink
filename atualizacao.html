@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SKYLINK — Sistema para Controle de Provedor</title>
+  <title>Skylink — Atualização de Cadastro</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
@@ -21,6 +21,7 @@
     </div>
 
     <nav class="menu-navegação">
+      <a href="index.html">Início</a>
       <button id="btn-tema" class="btn-tema">
         <i class='bx bx-moon'></i>
       </button>
@@ -54,11 +55,14 @@
       <form class="form-atualizar">
         <div>
           <label>CEP</label>
-          <button>
-            <select name="cep">
-              <option value="valo1">46470000</option>
-            </select>
-          </button>
+          <select name="cep">
+            <option value="valo1">40000-000</option>
+            <option value="valo2">60000-000</option>
+            <option value="valo3">49000-000</option>
+            <option value="valo4">50000-000</option>
+            <option value="valo5">57000-000</option>
+            <option value="valo6">65000-000</option>
+          </select>
         </div>
         <div>
           <label>Rua/Bairro</label>
@@ -74,12 +78,16 @@
         </div>
         <div>
           <label>Dia da fatura</label>
-          <input name="dia-fatura" type="text" placeholder="Todo mês dia 10">
+          <select name="fatura">
+            <option value="valo1">Todo dia 1º</option>
+            <option value="valo2">Todo dia 11</option>
+            <option value="valo3">Todo dia 27</option>
+          </select>
         </div>
       </form>
 
       <button class="btn-atualizar-cadastro">Atualizar Cadastro</button>
-    </section>        
+    </section>
   </main>
 
   <footer>
