@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylink — Informações do Cliente</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="cabeçalho">
+        <div class="logo">
+            <img src="imgs/logo.png" alt="logo">
+            <h6>Sistema para Controle de Provedor</h6>
+        </div>
+
+        <nav class="menu-navegação">
+            <a href="index.html">Início</a>
+            <button id="btn-tema" class="btn-tema">
+                <i class='bx bx-moon'></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="info-plano">
+            <div>
+                <h2>Detalhes do Cliente</h2>
+                <div class="details">
+                    <p><strong>Nome completo:</strong> Fulano da Silva Moura</p>
+                    <p><strong>CPF/CNPJ:</strong> xxx.xxx.xxx-xx</p>
+                    <p><strong>Email:</strong> silvamoura@example.com</p>
+                    <p><strong>Telefone:</strong> (XX) 000000000</p>
+                    <p><strong>Situação:</strong> Ativo</p>
+                    <p><strong>Endereço:</strong> Rua ABC, 123, Rio de Janeiro</p>
+                    <p><strong>Plano:</strong> 100 MBPS</p>
+                </div>
+            </div>
+            <div>
+                <h2>Informações do Plano</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Vencimento</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>15/11/25</td>
+                            <td>R$80,00</td>
+                            <td class="status-pago">Pago</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>15/12/25</td>
+                            <td>R$80,00</td>
+                            <td class="status-pendente">Pendente</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>15/01/25</td>
+                            <td>R$80,00</td>
+                            <td class="status-pendente">Pendente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; SKYLINK. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
