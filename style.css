@@ -380,7 +380,7 @@ body.dark .primary-action:hover {
 }
 
 .contato button {
-  background-color: #0052a4;
+  background-color: #032a56;
   color:white;
   width: 100 px;
   height: 30px;
@@ -427,7 +427,7 @@ body.dark .primary-action:hover {
 }
 
 button {
-  background-color: #0078D4; 
+  background-color: #ffffff; 
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -439,5 +439,58 @@ button {
 }
 
 button:hover {
-  background-color: #005a9e; 
+  background-color: #ffffff; 
 }
+
+.suporte {
+  padding: 40px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: white;
+  width: 1160px;
+}
+
+.suporte h1 {
+  font-family: 'Playfair Display', serif;
+  color: #032a56;
+  margin-bottom: 15px;
+}
+
+.suporte p {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.container-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid #032a56;
+  color: white;
+  padding: 20px;
+  width: 320px;      
+  height: 250px;    
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.card h2 {
+  color: #fbfdff;
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card:hover {
+  transform: scale(1.03);}
