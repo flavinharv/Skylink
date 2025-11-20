@@ -46,7 +46,11 @@ body {
 .menu-navegação {
   display: flex;
   gap: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .menu-navegação a {
   color: white;
@@ -234,6 +238,15 @@ td.actions {
   margin-top: 12px;
 }
 
+.atualizacao-cadastro .form-atualizar {
+    margin-bottom: 35px;
+}
+
+.atualizacao-cadastro h2 {
+    margin-bottom: 35px;
+}
+
+
 label {
   display: block;
   font-size: 13px;
@@ -273,9 +286,33 @@ select {
   align-items: start;
 }
 
-.details p {
-  margin: 8px 0;
+.info-plano h2 {
+    margin-bottom: 40px;
 }
+
+.details {
+    margin-top: 20px;
+}
+
+.details p {
+    margin: 18px 0;
+}
+
+/* MODAL - CADASTRO DE CLIENTE */
+#modalCadastroCliente .modal-body form h3:nth-of-type(1) {
+    margin-bottom: 25px; 
+}
+
+#modalCadastroCliente .modal-body form h3:nth-of-type(2) {
+    margin-top: 40px; 
+    margin-bottom: 25px;
+}
+
+
+#modalCadastroCliente .modal-body form div {
+    margin-bottom: 18px;
+}
+
 
 /* RODAPÉ */
 footer {
@@ -350,6 +387,36 @@ body.dark .primary-action:hover {
   background: #00d36b;
 }
 
+/* SUPORTE */
+.suporte {
+    width: 100%;          
+    max-width: 1200px;
+    margin: 40px auto;
+    display: block;
+}
+
+.suporte h1 {
+  background: #034788;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.suporte .card h2 {
+    background-color: #f5f5f5;  
+    padding: 15px 20px;
+    color:  #666;
+    margin: 0;
+    font-size: 20px;
+}
+
+.suporte .card p {
+    padding: 20px;
+    margin: 0;
+    font-size: 15px;
+}
 /* RESPONSIVO */
 @media (max-width: 880px) {
   .principal {
@@ -365,132 +432,3 @@ body.dark .primary-action:hover {
   }
 }
 
-.contato{
-  background-color: #dbe9f8; 
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-}
-
-.contato h1{
-  color:#000000;
-  padding:6px;
-  margin-bottom: 4px;
-}
-
-.contato button {
-  background-color: #032a56;
-  color:white;
-  width: 100 px;
-  height: 30px;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.suporte {
-  background-color: #ffffff;
-  padding: 40px 20px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  max-width: 1200px;
-  margin: 40px auto;
-}
-
-.suporte h1 {
-  font-size: 32px;
-  color: #000000;
-  margin-bottom: 20px;
-}
-
-.suporte p {
-  font-size: 18px;
-  color: #0e0d0d;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-
-.ajuda {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
-}
-
-.ajuda p {
-  font-size: 16px;
-  color: #000000;
-  margin-bottom: 20px;
-}
-
-button {
-  background-color: #ffffff; 
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ffffff; 
-}
-
-.suporte {
-  padding: 40px;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  color: white;
-  width: 1160px;
-}
-
-.suporte h1 {
-  font-family: 'Playfair Display', serif;
-  color: #032a56;
-  margin-bottom: 15px;
-}
-
-.suporte p {
-  margin-bottom: 30px;
-  font-size: 16px;
-}
-
-.container-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: #fff;
-  border: 2px solid #032a56;
-  color: white;
-  padding: 20px;
-  width: 320px;      
-  height: 250px;    
-  border-radius: 10px;
-  text-align: justify;
-}
-
-.card h2 {
-  color: #fbfdff;
-  margin-bottom: 15px;
-  font-size: 20px;
-  text-align: center;
-}
-
-.card p {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.card:hover {
-  transform: scale(1.03);}
