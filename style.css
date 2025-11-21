@@ -401,13 +401,17 @@ body.dark .primary-action:hover {
   padding: 14px;
   border-radius: 8px;
   font-size: 20px;
-  margin-bottom: 18px;
+  margin-bottom: 30px;
+}
+
+.suporte .card {
+    margin-bottom: 30px; 
 }
 
 .suporte .card h2 {
     background-color: #f5f5f5;  
     padding: 15px 20px;
-    color:  #666;
+    color:  #000000;
     margin: 0;
     font-size: 20px;
 }
@@ -416,6 +420,7 @@ body.dark .primary-action:hover {
     padding: 20px;
     margin: 0;
     font-size: 15px;
+    color:#000000;
 }
 /* RESPONSIVO */
 @media (max-width: 880px) {
