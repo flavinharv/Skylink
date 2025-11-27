@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skylink — Suporte</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <header class="cabeçalho">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo inicial">
+      <h6>Sistema para Controle de Provedor</h6>
+    </div>
+
+    <nav class="menu-navegação">
+      <a href="index.html">Início</a>
+      <a href="suporte.html">Suporte</a>
+
+      <button id="btn-tema" class="btn-tema">
+        <i class='bx bx-moon'></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="principal">
+      <div class="titulo-principal">
+        <h5>ACELERE SUA REALIDADE. VOE ALTO COM</h5>
+        <h1>SKYLINK</h1>
+      </div>
+      <img src="{{ url_for('static', filename='imgs/logo para inicio.png') }}" alt="Logo inicial">
+    </section>
+  </main>
+
+  <section class="suporte">
+    <h1>Suporte Interno</h1>
+    <p>Acesse rapidamente as informações internas do sistema.</p>
+
+    <div class="container-cards">
+
+      <div class="card">
+        <h2>Contatos Internos</h2>
+        <p>• Técnico de Plantão: (77) 99167-4213<br>
+          • Suporte NOC: skylink@gmail.com<br>
+          • Emergência: (77) 99700-8944</p>
+      </div>
+
+      <div class="card">
+        <h2>Procedimentos Básicos</h2>
+        <p> • Gerenciamento de funcionários<br>
+          • Editar, Deletar e Atualizar Cadastro<br>
+          • Consultar os procedimentos básicos antes de qualquer intervenção técnica<br>
+          • Manter contato com o técnico de plantão em caso de emergência</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; SKYLINK. Todos os direitos reservados.</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skylink — Atualização de Cadastro</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <header class="cabeçalho">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo inicial">
+      <h6>Sistema para Controle de Provedor</h6>
+    </div>
+
+  <nav class="menu-navegação">
+  <a href="index.html">Início</a>
+  <a href="suporte.html">Suporte</a>
+
+  <button id="btn-tema" class="btn-tema">
+    <i class='bx bx-moon'></i>
+  </button>
+</nav>
+  </header>
+
+  <main>
+    <section class="atualizacao-cadastro">
+      <h2>Atualização do Cadastro</h2>
+      <h3>Dados pessoais</h3>
+      <form class="form-atualizar">
+        <div>
+          <label>Nome completo</label>
+          <input name="nome" type="text" placeholder="Maria das Graças">
+        </div>
+        <div>
+          <label>CPF/CNPJ</label>
+          <input name="cpf/cnpj" type="number" placeholder="000.999.890-22" required>
+        </div>
+        <div>
+          <label>Email</label>
+          <input name="email" type="email" placeholder="mariagraca@example.com" required>
+        </div>
+        <div>
+          <label>Telefone</label>
+          <input name="tel" type="tel" placeholder="77 999800500">
+        </div>
+      </form>
+
+      <h3>Dados do contrato</h3>
+      <form class="form-atualizar">
+        <div>
+          <label>CEP</label>
+          <select name="cep">
+            <option value="valo1">40000-000</option>
+            <option value="valo2">60000-000</option>
+            <option value="valo3">49000-000</option>
+            <option value="valo4">50000-000</option>
+            <option value="valo5">57000-000</option>
+            <option value="valo6">65000-000</option>
+          </select>
+        </div>
+        <div>
+          <label>Rua/Bairro</label>
+          <input name="rua/bairro" type="text" placeholder="Rua Avenida Brasil/ Divino">
+        </div>
+        <div>
+          <label>Número da casa</label>
+          <input name="num" type="number" placeholder="78">
+        </div>
+        <div>
+          <label>Data inicial</label>
+          <input name="data-inicial" type="date" placeholder="11/12/2012">
+        </div>
+        <div>
+          <label>Dia da fatura</label>
+          <select name="fatura">
+            <option value="valo1">Todo dia 1º</option>
+            <option value="valo2">Todo dia 11</option>
+            <option value="valo3">Todo dia 27</option>
+          </select>
+        </div>
+      </form>
+
+      <button class="btn-atualizar-cadastro">Atualizar Cadastro</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; SKYLINK. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
