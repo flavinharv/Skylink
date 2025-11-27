@@ -7,6 +7,14 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/atualizacao')
+def atualizacao():
+    return render_template('atualizacao.html')
+
+@app.route('/detalhes-cliente')
+def detalhesCliente():
+    return render_template('detalhes-cliente.html')
+
 @app.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html')
