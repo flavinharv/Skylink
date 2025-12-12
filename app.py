@@ -10,6 +10,18 @@ def create_app():
     @app.route('/home')
     def home():
         return render_template('index.html')
+    
+    @app.route('/atualizacao')
+    def atualizacao():
+        return render_template('atualizacao.html')
+
+    @app.route('/detalhes-cliente')
+    def detalhesCliente():
+        return render_template('detalhes-cliente.html')
+
+    @app.route('/cadastro')
+    def cadastro():
+
 
     @app.route('/recuperar-senha')
     def recuperarSenha():
