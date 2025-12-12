@@ -10,7 +10,7 @@
 <body class="pagina-senha">
      <main class="container">
         <form>
-            <img src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo inicial">
+            <img src="{{ url_for('static', filename='imgs/logo para inicio.png') }}" alt="Logo inicial">
             <h1>Recuperar Senha</h1>
 
              <div class="input-box">
@@ -25,7 +25,7 @@
             </div>
 
             <div>
-                <button class="login" type="button" onclick="window.location.href='login.html'">Cancelar
+                <button class="login" type="button" onclick="{{ url_for('home') }}">Cancelar
                 </button>
             </div>
 
