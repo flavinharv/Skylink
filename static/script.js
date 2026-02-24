@@ -37,4 +37,3 @@ async function fazerLogin() {
         alert('Erro na conexão com o servidor.');
     }
 }
-

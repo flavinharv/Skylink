@@ -209,13 +209,13 @@ td.actions {
 }
 
 .status-pago {
-  color: #007a3d;
-  font-weight: 700;
+    background-color: #4CAF50;
+    color: white;
 }
 
 .status-pendente {
-  color: #b85a00;
-  font-weight: 700;
+    background-color: #f44336;
+    color: white;
 }
 
 #btn-deletar {

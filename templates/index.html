@@ -10,8 +10,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -45,9 +43,11 @@
     <section>
       <h2>Gerenciamento de Usuários</h2>
       <div class="controls">
-        <input type="text" placeholder="Pesquisar Cliente">
+        <input type="text" name="busca" value="{{ request.args.get('busca', '') }}" placeholder="Pesquisar Cliente"
+          form="formBusca">
+        <a href="{{ url_for('home') }}">Limpar</a>
+        <form id="formBusca" method="GET" action="{{ url_for('home') }}"></form>
         <a href="#" data-toggle="modal" data-target="#modalCadastroCliente" class="add">+ Novo Cliente</a>
-      </div>
       </div>
 
       <div class="tabela-usuarios">
@@ -62,50 +62,27 @@
           </thead>
 
           <tbody>
+            {% for cliente in clientes %}
             <tr>
-              <td>Maria Santos</td>
-              <td>012.345.678-99</td>
+              <td>{{ cliente.nome_completo }}</td>
+              <td>{{ cliente.cpf }}</td>
               <td class="status-pago">Pago</td>
               <td class="actions">
-
-                <a href="{{ url_for('atualizacao') }}">
+                <a href="{{ url_for('editar_cliente', id=cliente.id) }}">
                   <i class='bx bx-pencil'></i>
                 </a>
-                <a href="#" data-toggle="modal" data-target="#modalDeletarCliente" class="remove" data-id="cliente-1">
+                <a href="#" data-toggle="modal" data-target="#modalDeletarCliente{{ cliente.id }}" class="remove">
                   <i class='bx bx-trash'></i>
                 </a>
-                <a href="{{ url_for('detalhesCliente') }}"><i class="bi bi-eye"></i></a>
-              </td>
-            </tr>
 
-            <tr>
-              <td>João Silva</td>
-              <td>098.765.345-22</td>
-              <td class="status-pago">Pago</td>
-              <td class="actions">
-
-                <a href="{{ url_for('atualizacao') }}"><i class='bx bx-pencil'></i></a>
-                <a href="#" data-toggle="modal" data-target="#modalDeletarCliente" class="remove" data-id="cliente-1">
-                  <i class='bx bx-trash'></i>
+                <a href="{{ url_for('detalhesCliente', id=cliente.id) }}">
+                  <i class="bi bi-eye"></i>
                 </a>
-                <a href="{{ url_for('detalhesCliente') }}"><i class="bi bi-eye"></i></a>
               </td>
             </tr>
-
-            <tr>
-              <td>Joice Alencar</td>
-              <td>347.896.098-77</td>
-              <td class="status-pendente">Pendente</td>
-              <td class="actions">
-
-                <a href="{{ url_for('atualizacao') }}"><i class='bx bx-pencil'></i></a>
-                <a href="#" data-toggle="modal" data-target="#modalDeletarCliente" class="remove" data-id="cliente-1">
-                  <i class='bx bx-trash'></i>
-                </a>
-                <a href="{{ url_for('detalhesCliente') }}"><i class="bi bi-eye"></i></a>
-              </td>
-            </tr>
+            {% endfor %}
           </tbody>
+
         </table>
       </div>
     </section>
@@ -122,75 +99,112 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+
             <div class="modal-body">
-              <form>
+              <form action="{{ url_for('cadastro') }}" method="POST">
+
                 <h3>Dados pessoais</h3>
                 <div>
                   <label>Nome completo</label>
-                  <input type="text" class="form-control" placeholder="Nome completo do cliente">
+                  <input type="text" name="nome_completo" class="form-control" placeholder="Nome completo do cliente">
                 </div>
+
                 <div>
-                  <label>CPF/CNPJ</label>
-                  <input type="text" class="form-control" placeholder="000.000.000-00">
+                  <label>CPF</label>
+                  <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00">
                 </div>
+
                 <div>
                   <label>Email</label>
-                  <input type="email" class="form-control" placeholder="email@example.com">
+                  <input type="email" name="email" class="form-control" placeholder="email@example.com">
                 </div>
+
                 <div>
                   <label>Telefone</label>
-                  <input type="tel" class="form-control" placeholder="(XX) 00000-0000">
+                  <input type="tel" name="telefone" class="form-control" placeholder="(XX) 00000-0000">
                 </div>
 
                 <h3>Dados do contrato</h3>
                 <div>
                   <label>CEP</label>
-                  <input type="text" class="form-control" placeholder="CEP">
+                  <input type="text" name="cep" class="form-control" placeholder="CEP">
                 </div>
+
                 <div>
-                  <label>Rua/Bairro</label>
-                  <input type="text" class="form-control" placeholder="Rua e Bairro">
+                  <label>Endereço</label>
+                  <input type="text" name="endereco" class="form-control" placeholder="Endereço completo">
                 </div>
+
                 <div>
                   <label>Número da casa</label>
-                  <input type="number" class="form-control" placeholder="Número">
+                  <input type="number" name="numero_casa" class="form-control" placeholder="Número">
                 </div>
+
                 <div>
                   <label>Data inicial</label>
-                  <input type="date" class="form-control">
+                  <input type="date" name="data_inicial" class="form-control">
                 </div>
+
+                <div>
+                  <label>Dia da fatura</label>
+                  <select name="fatura">
+                    <option value="valor1">Todo dia 1º</option>
+                    <option value="valor2">Todo dia 11</option>
+                    <option value="valor3">Todo dia 27</option>
+                  </select>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>
+                </div>
+
               </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary">Cadastrar Cliente</button>
-            </div>
+
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Modal de Deletar Cliente -->
-    <div class="modal fade" id="modalDeletarCliente" tabindex="-1" role="dialog"
-      aria-labelledby="modalDeletarClienteLabel" aria-hidden="true">
+   <!-- Modal de Deletar Cliente -->
+    {% for cliente in clientes %}
+
+    <div class="modal fade" id="modalDeletarCliente{{ cliente.id }}" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
-            <h5 class="modal-title" id="modalDeletarClienteLabel">Deletar Cliente</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
+            <h5 class="modal-title">Deletar Cliente</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
-            <p>Tem certeza que deseja deletar este cliente?</p>
+            <p>Tem certeza que deseja deletar <strong>{{ cliente.nome_completo }}</strong>?</p>
           </div>
+
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" id="btn-confirmar-deletar" class="btn btn-danger">Deletar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Cancelar
+            </button>
+
+            <form action="{{ url_for('deletar', id=cliente.id) }}" method="POST">
+              <button type="submit" class="btn btn-danger">
+                Deletar
+              </button>
+            </form>
+
           </div>
+
         </div>
       </div>
     </div>
+
+    {% endfor %}
+
+
   </main>
 
   <footer>

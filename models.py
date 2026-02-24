@@ -13,6 +13,21 @@ class Cliente(db.Model):
     endereco = db.Column(db.String(255), nullable=False)
     numero_casa = db.Column(db.String(15), nullable=False)
     data_inicial = db.Column(db.DateTime, nullable=False)
+                             
+    mensalidades = db.relationship(
+        'Mensalidade',
+        backref='cliente',
+        lazy=True,
+        cascade="all, delete-orphan"
+    )
     
     def __repr__(self):
         return f"<{self.nome_completo}>"
+
+class Mensalidade(db.Model):
+    __tablename__ = 'mensalidades'
+    id = db.Column(db.Integer, primary_key=True)
+    vencimento = db.Column(db.Date)
+    valor = db.Column(db.Float)
+    status = db.Column(db.String(20), default="Pendente")
+    cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id'))

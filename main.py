@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from db import db
-from models import Cliente
+from models import Cliente, Mensalidade
 from datetime import datetime
 
 app = Flask(__name__)
@@ -36,14 +36,59 @@ def home():
         clientes = Cliente.query.all()
     return render_template('index.html', clientes=clientes)
 
-    
-@app.route('/atualizacao')
-def atualizacao():
-    return render_template('atualizacao.html')
 
-@app.route('/detalhes-cliente')
-def detalhesCliente():
-    return render_template('detalhes-cliente.html')
+@app.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar_cliente(id):
+
+    # Busca o cliente pelo ID
+    cliente = Cliente.query.get_or_404(id)
+
+    # Se for POST (clicou em salvar)
+    if request.method == 'POST':
+
+        # Atualiza os campos normais
+        cliente.nome_completo = request.form['nome_completo']
+        cliente.cpf = request.form['cpf']
+        cliente.email = request.form['email']
+        cliente.telefone = request.form['telefone']
+        cliente.cep = request.form['cep']
+        cliente.endereco = request.form['endereco']
+        cliente.numero_casa = request.form['numero_casa']
+        cliente.fatura = request.form['fatura']
+
+        # 🔥 Conversão correta da data (NÃO aceita vazio)
+        cliente.data_inicial = datetime.strptime(
+            request.form['data_inicial'],
+            "%Y-%m-%d"
+        ).date()
+
+        # Salva no banco
+        db.session.commit()
+
+        # Redireciona para home
+        return redirect(url_for('home'))
+
+    # Se for GET (abrindo a página)
+    return render_template('atualizacao.html', cliente=cliente)
+
+
+@app.route('/detalhes-cliente/<int:id>', methods=['GET'])
+def detalhesCliente(id):
+    cliente = Cliente.query.get_or_404(id)
+
+    return render_template('detalhes-cliente.html', cliente=cliente)
+
+@app.route('/alternar_status/<int:id>', methods=['POST'])
+def alternar_status(id):
+    mensalidade = Mensalidade.query.get_or_404(id)
+
+    if mensalidade.status == "Pendente":
+        mensalidade.status = "Pago"
+    else:
+        mensalidade.status = "Pendente"
+
+    db.session.commit()
+    return redirect(request.referrer)
 
 @app.route('/cadastro-cliente', methods=['GET','POST'])
 def cadastro():

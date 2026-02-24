@@ -33,47 +33,35 @@
             <div>
                 <h2>Detalhes do Cliente</h2>
                 <div class="details">
-                    <p><strong>Nome completo:</strong> Fulano da Silva Moura</p>
-                    <p><strong>CPF/CNPJ:</strong> xxx.xxx.xxx-xx</p>
-                    <p><strong>Email:</strong> silvamoura@example.com</p>
-                    <p><strong>Telefone:</strong> (XX) 000000000</p>
+                    <p><strong>Nome completo:</strong> {{( cliente.nome_completo )}}</p>
+                    <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
+                    <p><strong>Email:</strong> {{ cliente.email }}</p>
+                    <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
                     <p><strong>Situação:</strong> Ativo</p>
-                    <p><strong>Endereço:</strong> Rua ABC, 123, Rio de Janeiro</p>
-                    <p><strong>Plano:</strong> 100 MBPS</p>
+                    <p><strong>Endereço:</strong> {{ cliente.endereco }}</p>
                 </div>
             </div>
             <div>
-                <h2>Informações do Plano</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Vencimento</th>
-                            <th>Valor</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>15/11/25</td>
-                            <td>R$80,00</td>
-                            <td class="status-pago">Pago</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>15/12/25</td>
-                            <td>R$80,00</td>
-                            <td class="status-pendente">Pendente</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>15/01/25</td>
-                            <td>R$80,00</td>
-                            <td class="status-pendente">Pendente</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h2>Informações das Mensalidades</h2>
+                <tbody>
+                    {% for mensalidade in cliente.mensalidades %}
+                    <tr>
+                        <td>{{ mensalidade.id }}</td>
+                        <td>{{ mensalidade.vencimento }}</td>
+                        <td>R$ {{ mensalidade.valor }}</td>
+
+                        <td>
+                            <form action="{{ url_for('alternar_status', id=mensalidade.id) }}" method="POST">
+                                <button type="submit"
+                                    class="pagamento {{ 'status-pago' if mensalidade.status == 'Pago' else 'status-pendente' }}">
+
+                                    {{ mensalidade.status }}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </div>
         </section>
     </main>

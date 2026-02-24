@@ -20,76 +20,115 @@
       <h6>Sistema para Controle de Provedor</h6>
     </div>
 
-  <nav class="menu-navegação">
-  <a href="{{ url_for('home') }}">Início</a>
-  <a href="{{ url_for('suporte') }}">Suporte</a>
+    <nav class="menu-navegação">
+      <a href="{{ url_for('home') }}">Início</a>
+      <a href="{{ url_for('suporte') }}">Suporte</a>
 
-  <button id="btn-tema" class="btn-tema">
-    <i class='bx bx-moon'></i>
-  </button>
-</nav>
+      <button id="btn-tema" class="btn-tema">
+        <i class='bx bx-moon'></i>
+      </button>
+    </nav>
   </header>
 
   <main>
     <section class="atualizacao-cadastro">
-      <h2>Atualização do Cadastro</h2>
-      <h3>Dados pessoais</h3>
-      <form class="form-atualizar">
-        <div>
-          <label>Nome completo</label>
-          <input name="nome" type="text" placeholder="Maria das Graças">
-        </div>
-        <div>
-          <label>CPF/CNPJ</label>
-          <input name="cpf/cnpj" type="number" placeholder="000.999.890-22" required>
-        </div>
-        <div>
-          <label>Email</label>
-          <input name="email" type="email" placeholder="mariagraca@example.com" required>
-        </div>
-        <div>
-          <label>Telefone</label>
-          <input name="tel" type="tel" placeholder="77 999800500">
-        </div>
-      </form>
+  <h2>Atualização do Cadastro</h2>
 
-      <h3>Dados do contrato</h3>
-      <form class="form-atualizar">
-        <div>
-          <label>CEP</label>
-          <select name="cep">
-            <option value="valo1">40000-000</option>
-            <option value="valo2">60000-000</option>
-            <option value="valo3">49000-000</option>
-            <option value="valo4">50000-000</option>
-            <option value="valo5">57000-000</option>
-            <option value="valo6">65000-000</option>
-          </select>
-        </div>
-        <div>
-          <label>Rua/Bairro</label>
-          <input name="rua/bairro" type="text" placeholder="Rua Avenida Brasil/ Divino">
-        </div>
-        <div>
-          <label>Número da casa</label>
-          <input name="num" type="number" placeholder="78">
-        </div>
-        <div>
-          <label>Data inicial</label>
-          <input name="data-inicial" type="date" placeholder="11/12/2012">
-        </div>
-        <div>
-          <label>Dia da fatura</label>
-          <select name="fatura">
-            <option value="valo1">Todo dia 1º</option>
-            <option value="valo2">Todo dia 11</option>
-            <option value="valo3">Todo dia 27</option>
-          </select>
-        </div>
-      </form>
+  <form method="POST">
 
-      <button class="btn-atualizar-cadastro">Atualizar Cadastro</button>
-    </section>
+    <h3>Dados pessoais</h3>
+
+    <div>
+      <label>Nome completo</label>
+      <input type="text"
+             name="nome_completo"
+             value="{{ cliente.nome_completo }}"
+             required>
+    </div>
+
+    <div>
+      <label>CPF</label>
+      <input type="text"
+             name="cpf"
+             value="{{ cliente.cpf }}"
+             required>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email"
+             name="email"
+             value="{{ cliente.email }}"
+             required>
+    </div>
+
+    <div>
+      <label>Telefone</label>
+      <input type="tel"
+             name="telefone"
+             value="{{ cliente.telefone }}">
+    </div>
+
+    <h3>Dados do contrato</h3>
+
+    <div>
+      <label>CEP</label>
+      <input type="text"
+             name="cep"
+             value="{{ cliente.cep }}">
+    </div>
+
+    <div>
+      <label>Endereço</label>
+      <input type="text"
+             name="endereco"
+             value="{{ cliente.endereco }}">
+    </div>
+
+    <div>
+      <label>Número da casa</label>
+      <input type="number"
+             name="numero_casa"
+             value="{{ cliente.numero_casa }}">
+    </div>
+
+    <div>
+      <label>Data inicial</label>
+      <input type="date"
+             name="data_inicial"
+             required
+             value="{{ cliente.data_inicial.strftime('%Y-%m-%d') if cliente.data_inicial else '' }}">
+    </div>
+
+    <div>
+      <label>Dia da fatura</label>
+      <select name="fatura">
+
+        <option value="valor1"
+          {% if cliente.fatura == 'valor1' %}selected{% endif %}>
+          Todo dia 1º
+        </option>
+
+        <option value="valor2"
+          {% if cliente.fatura == 'valor2' %}selected{% endif %}>
+          Todo dia 11
+        </option>
+
+        <option value="valor3"
+          {% if cliente.fatura == 'valor3' %}selected{% endif %}>
+          Todo dia 27
+        </option>
+
+      </select>
+    </div>
+
+    <button type="submit" class="btn-atualizar-cadastro">
+      Atualizar Cadastro
+    </button>
+
+  </form>
+</section>
+
   </main>
 
   <footer>
