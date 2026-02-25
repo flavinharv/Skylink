@@ -24,6 +24,10 @@
     <nav class="menu-navegação">
       <a href="{{ url_for('home') }}">Início</a>
       <a href="{{ url_for('suporte') }}">Suporte</a>
+      <!-- Link de logout -->
+      <a href="{{ url_for('logout') }}" title="Sair" class="logout-icon">
+        <i class='bx bx-log-out'></i>
+      </a>
 
       <button id="btn-tema" class="btn-tema">
         <i class='bx bx-moon'></i>
@@ -150,7 +154,7 @@
                     <label>Dia da fatura</label>
                     <select name="dia_vencimento" class="form-control">
                       {% for dia in range(1, 32) %}
-                        <option value="{{ dia }}">Todo dia {{ dia }}</option>
+                      <option value="{{ dia }}">Todo dia {{ dia }}</option>
                       {% endfor %}
                     </select>
                   </div>
@@ -169,7 +173,7 @@
       </div>
     </section>
 
-   <!-- Modal de Deletar Cliente -->
+    <!-- Modal de Deletar Cliente -->
     {% for cliente in clientes %}
 
     <div class="modal fade" id="modalDeletarCliente{{ cliente.id }}" tabindex="-1" role="dialog">

@@ -250,6 +250,26 @@ td.actions {
   margin-bottom: 35px;
 }
 
+.form-atualizar h3 {
+  grid-column: 1 / -1;
+}
+
+.form-atualizar h3:not(:first-of-type) {
+  margin-top: 25px;
+}
+.form-atualizar button {
+  grid-column: 1 / -1;
+  justify-self: start; 
+}
+
+.atualizacao-cadastro h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.atualizacao-cadastro h3:first-of-type {
+  margin-top: 10px; 
+}
 
 label {
   display: block;
@@ -673,4 +693,24 @@ body.dark .card-mensalidade {
 
 body.dark .data {
   color: #00bf63;
+}
+
+/* PDF */
+.btn-baixar-pdf {
+    background-color: #02305f; 
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none; 
+    transition: background 0.3s;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    display: inline-block; 
+}
+
+.btn-baixar-pdf:hover {
+    background-color: #034788; 
 }

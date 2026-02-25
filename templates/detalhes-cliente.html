@@ -37,8 +37,15 @@
                     <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
                     <p><strong>Email:</strong> {{ cliente.email }}</p>
                     <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
-                    <p><strong>Situação:</strong> Ativo</p>
+                    <p><strong>CEP:</strong> {{ cliente.cep }}</p>
                     <p><strong>Endereço:</strong> {{ cliente.endereco }}</p>
+                    <p><strong>Número da casa:</strong> {{ cliente.numero_casa }}</p>
+                    <p><strong>Data inicial:</strong> {{ cliente.data_inicial.strftime('%d/%m/%Y') }}</p>
+                    <p><strong>Dia da fatura:</strong> Todo dia {{ cliente.dia_vencimento }}</p>
+                    <p><strong>Situação:</strong> Ativo</p>
+                    <a href="{{ url_for('gerar_pdf', id=cliente.id) }}" class="btn-baixar-pdf" target="_blank">
+                        Baixar PDF
+                    </a>
                 </div>
             </div>
             <div>

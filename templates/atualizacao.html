@@ -32,102 +32,74 @@
 
   <main>
     <section class="atualizacao-cadastro">
-  <h2>Atualização do Cadastro</h2>
+      <h2>Atualização do Cadastro</h2>
+      
+      <form method="POST" class="form-atualizar">
 
-  <form method="POST">
+        <h3>Dados pessoais</h3>
 
-    <h3>Dados pessoais</h3>
+        <div>
+          <label>Nome completo</label>
+          <input type="text" name="nome_completo" value="{{ cliente.nome_completo }}" required>
+        </div>
 
-    <div>
-      <label>Nome completo</label>
-      <input type="text"
-             name="nome_completo"
-             value="{{ cliente.nome_completo }}"
-             required>
-    </div>
+        <div>
+          <label>CPF</label>
+          <input type="text" name="cpf" value="{{ cliente.cpf }}" required>
+        </div>
 
-    <div>
-      <label>CPF</label>
-      <input type="text"
-             name="cpf"
-             value="{{ cliente.cpf }}"
-             required>
-    </div>
+        <div>
+          <label>Email</label>
+          <input type="email" name="email" value="{{ cliente.email }}" required>
+        </div>
 
-    <div>
-      <label>Email</label>
-      <input type="email"
-             name="email"
-             value="{{ cliente.email }}"
-             required>
-    </div>
+        <div>
+          <label>Telefone</label>
+          <input type="tel" name="telefone" value="{{ cliente.telefone }}">
+        </div>
 
-    <div>
-      <label>Telefone</label>
-      <input type="tel"
-             name="telefone"
-             value="{{ cliente.telefone }}">
-    </div>
+        <h3>Dados do contrato</h3>
 
-    <h3>Dados do contrato</h3>
+        <div>
+          <label>CEP</label>
+          <input type="text" name="cep" value="{{ cliente.cep }}">
+        </div>
 
-    <div>
-      <label>CEP</label>
-      <input type="text"
-             name="cep"
-             value="{{ cliente.cep }}">
-    </div>
+        <div>
+          <label>Endereço</label>
+          <input type="text" name="endereco" value="{{ cliente.endereco }}">
+        </div>
 
-    <div>
-      <label>Endereço</label>
-      <input type="text"
-             name="endereco"
-             value="{{ cliente.endereco }}">
-    </div>
+        <div>
+          <label>Número da casa</label>
+          <input type="number" name="numero_casa" value="{{ cliente.numero_casa }}">
+        </div>
 
-    <div>
-      <label>Número da casa</label>
-      <input type="number"
-             name="numero_casa"
-             value="{{ cliente.numero_casa }}">
-    </div>
+        <div>
+          <label>Data inicial</label>
+          <input type="date" name="data_inicial" required
+            value="{{ cliente.data_inicial.strftime('%Y-%m-%d') if cliente.data_inicial else '' }}">
+        </div>
 
-    <div>
-      <label>Data inicial</label>
-      <input type="date"
-             name="data_inicial"
-             required
-             value="{{ cliente.data_inicial.strftime('%Y-%m-%d') if cliente.data_inicial else '' }}">
-    </div>
+        <div>
+          <div>
+            <label>Dia da fatura</label>
+            <select name="dia_vencimento" class="form-control">
+              {% for dia in range(1, 32) %}
+              <option value="{{ dia }}" {% if cliente.dia_vencimento==dia %} selected {% endif %}>
+                Todo dia {{ dia }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
 
-    <div>
-      <label>Dia da fatura</label>
-      <select name="fatura">
+        <button type="submit" class="btn-atualizar-cadastro">
+          Atualizar Cadastro
+        </button>
 
-        <option value="valor1"
-          {% if cliente.fatura == 'valor1' %}selected{% endif %}>
-          Todo dia 1º
-        </option>
-
-        <option value="valor2"
-          {% if cliente.fatura == 'valor2' %}selected{% endif %}>
-          Todo dia 11
-        </option>
-
-        <option value="valor3"
-          {% if cliente.fatura == 'valor3' %}selected{% endif %}>
-          Todo dia 27
-        </option>
-
-      </select>
-    </div>
-
-    <button type="submit" class="btn-atualizar-cadastro">
-      Atualizar Cadastro
-    </button>
-
-  </form>
-</section>
+      </form>
+    </section>
 
   </main>
 
