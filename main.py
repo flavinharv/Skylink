@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from db import db
 from models import Cliente, Mensalidade
 from datetime import datetime
+import calendar
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -103,8 +104,15 @@ def cadastro():
         cep = request.form['cep']
         endereco = request.form['endereco']
         numero_casa = request.form['numero_casa']
-        data_inicial = datetime.strptime(request.form['data_inicial'], "%Y-%m-%d")
-        
+
+        data_inicial = datetime.strptime(
+            request.form['data_inicial'], 
+            "%Y-%m-%d"
+        )
+
+        # 🔥 AQUI ESTÁ O QUE FALTAVA
+        dia_vencimento = data_inicial.day
+
         novo_cliente = Cliente(
             nome_completo=nome_completo,
             cpf=cpf,
@@ -113,14 +121,37 @@ def cadastro():
             cep=cep,
             endereco=endereco,
             numero_casa=numero_casa,
-            data_inicial=data_inicial
-        )
+            data_inicial=data_inicial,
+            dia_vencimento=data_inicial.day
+            )
 
         db.session.add(novo_cliente)
         db.session.commit()
 
-        return redirect(url_for('home'))
-    
+            # 🔥 GERAR 12 MENSALIDADES
+        for i in range(12):
+            ano = data_inicial.year
+            mes = data_inicial.month + i
+
+            while mes > 12:
+                mes -= 12
+                ano += 1
+
+            ultimo_dia = calendar.monthrange(ano, mes)[1]
+            dia = min(data_inicial.day, ultimo_dia)
+
+            vencimento = datetime(ano, mes, dia)
+
+            nova_mensalidade = Mensalidade(
+                vencimento=vencimento,
+                valor=80.0,
+                cliente_id=novo_cliente.id
+                )
+
+            db.session.add(nova_mensalidade)
+
+        db.session.commit()
+                 
 @app.route('/deletar/<int:id>', methods=['POST'])
 def deletar(id):
     cliente = Cliente.query.get_or_404(id)

@@ -146,12 +146,14 @@
                 </div>
 
                 <div>
-                  <label>Dia da fatura</label>
-                  <select name="fatura">
-                    <option value="valor1">Todo dia 1º</option>
-                    <option value="valor2">Todo dia 11</option>
-                    <option value="valor3">Todo dia 27</option>
-                  </select>
+                  <div>
+                    <label>Dia da fatura</label>
+                    <select name="dia_vencimento" class="form-control">
+                      {% for dia in range(1, 32) %}
+                        <option value="{{ dia }}">Todo dia {{ dia }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
                 </div>
 
                 <div class="modal-footer">

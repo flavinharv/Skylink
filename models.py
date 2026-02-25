@@ -13,7 +13,8 @@ class Cliente(db.Model):
     endereco = db.Column(db.String(255), nullable=False)
     numero_casa = db.Column(db.String(15), nullable=False)
     data_inicial = db.Column(db.DateTime, nullable=False)
-                             
+    dia_vencimento = db.Column(db.Integer, nullable=False)
+                         
     mensalidades = db.relationship(
         'Mensalidade',
         backref='cliente',
