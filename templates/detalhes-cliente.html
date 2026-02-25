@@ -44,21 +44,27 @@
             <div>
                 <h2>Informações das Mensalidades</h2>
                 <tbody>
-                    {% for m in cliente.mensalidades %}
-                    <tr>
-                        <td>{{ m.id }}</td>
-                        <td>{{ m.vencimento.strftime('%d/%m/%Y') }}</td>
-                        <td>R$ {{ "%.2f"|format(m.valor) }}</td>
-                        <td>
-                            <form action="{{ url_for('alternar_status', id=m.id) }}" method="POST">
+
+                    <div class="lista-mensalidades">
+                        {% for mensalidade in cliente.mensalidades %}
+                        <div class="card-mensalidade">
+
+                            <div class="info-mensalidade">
+                                <span class="numero">{{ loop.index }}</span>
+                                <span class="data">{{ mensalidade.vencimento.strftime('%d/%m/%Y') }}</span>
+                                <span class="valor">R$ {{ "%.2f"|format(mensalidade.valor) }}</span>
+                            </div>
+
+                            <form method="POST" action="{{ url_for('alternar_status', id=mensalidade.id) }}">
                                 <button type="submit"
-                                    class="btn btn-sm {{ 'btn-success' if m.status=='Pago' else 'btn-danger' }}">
-                                    {{ m.status }}
+                                    class="status-btn {% if mensalidade.status == 'Pago' %}pago{% else %}pendente{% endif %}">
+                                    {{ mensalidade.status }}
                                 </button>
                             </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
+
+                        </div>
+                        {% endfor %}
+                    </div>
                 </tbody>
             </div>
         </section>

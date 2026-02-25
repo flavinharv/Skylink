@@ -583,3 +583,94 @@ form img {
   display: flex;
   margin: auto;
 }
+
+/* LISTA DE MENSALIDADES */
+.lista-mensalidades {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* CARD DA MENSALIDADE */
+.card-mensalidade {
+  background: #f9fbff;
+  border-left: 6px solid #034788;
+  padding: 14px 18px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-mensalidade:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(3, 71, 136, 0.15);
+}
+
+/* INFORMAÇÕES */
+.info-mensalidade {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: 500;
+}
+
+.numero {
+  background: #034788;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.data {
+  font-weight: 600;
+  color: #034788;
+}
+
+.valor {
+  font-weight: bold;
+  color: #00bf63;
+}
+
+/* BOTÃO STATUS */
+.status-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* PAGO */
+.status-btn.pago {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.status-btn.pago:hover {
+  background-color: #3c9c40;
+}
+
+/* PENDENTE */
+.status-btn.pendente {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-btn.pendente:hover {
+  background-color: #d9362c;
+}
+
+/* MODO ESCURO */
+body.dark .card-mensalidade {
+  background: #1f2a3a;
+  border-left: 6px solid #00bf63;
+}
+
+body.dark .data {
+  color: #00bf63;
+}

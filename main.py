@@ -91,66 +91,62 @@ def alternar_status(id):
     db.session.commit()
     return redirect(request.referrer)
 
-@app.route('/cadastro-cliente', methods=['GET','POST'])
+@app.route('/cadastro-cliente', methods=['POST'])
 def cadastro():
-    if request.method == 'GET':
-        return render_template('index.html')
-    
-    elif request.method == 'POST':
-        nome_completo = request.form['nome_completo']
-        cpf = request.form['cpf']
-        email = request.form['email']
-        telefone = request.form['telefone']
-        cep = request.form['cep']
-        endereco = request.form['endereco']
-        numero_casa = request.form['numero_casa']
+    nome = request.form['nome_completo']
+    cpf = request.form['cpf']
+    email = request.form['email']
+    telefone = request.form['telefone']
+    cep = request.form['cep']
+    endereco = request.form['endereco']
+    numero_casa = request.form['numero_casa']
 
-        data_inicial = datetime.strptime(
-            request.form['data_inicial'], 
-            "%Y-%m-%d"
+    data_inicial = datetime.strptime(request.form.get("data_inicial"), "%Y-%m-%d")
+    dia_vencimento = data_inicial.day
+
+    # 🔎 VERIFICA SE EMAIL JÁ EXISTE
+    cliente_existente = Cliente.query.filter_by(email=email).first()
+
+    if cliente_existente:
+        return "Este email já está cadastrado!", 400
+
+    novo_cliente = Cliente(
+        nome_completo=nome,
+        cpf=cpf,
+        email=email,
+        telefone=telefone,
+        cep=cep,
+        endereco=endereco,
+        numero_casa=numero_casa,
+        data_inicial=data_inicial,
+        dia_vencimento=dia_vencimento
+    )
+
+    db.session.add(novo_cliente)
+    db.session.commit()
+
+    # Gerar mensalidades
+    for i in range(12):
+        ano = data_inicial.year
+        mes = data_inicial.month + i
+        while mes > 12:
+            mes -= 12
+            ano += 1
+
+        ultimo_dia = calendar.monthrange(ano, mes)[1]
+        dia = min(dia_vencimento, ultimo_dia)
+        vencimento = datetime(ano, mes, dia)
+
+        nova_mensalidade = Mensalidade(
+            vencimento=vencimento,
+            valor=80.0,
+            cliente_id=novo_cliente.id
         )
+        db.session.add(nova_mensalidade)
 
-        # 🔥 AQUI ESTÁ O QUE FALTAVA
-        dia_vencimento = data_inicial.day
+    db.session.commit()
 
-        novo_cliente = Cliente(
-            nome_completo=nome_completo,
-            cpf=cpf,
-            email=email,
-            telefone=telefone,
-            cep=cep,
-            endereco=endereco,
-            numero_casa=numero_casa,
-            data_inicial=data_inicial,
-            dia_vencimento=data_inicial.day
-            )
-
-        db.session.add(novo_cliente)
-        db.session.commit()
-
-            # 🔥 GERAR 12 MENSALIDADES
-        for i in range(12):
-            ano = data_inicial.year
-            mes = data_inicial.month + i
-
-            while mes > 12:
-                mes -= 12
-                ano += 1
-
-            ultimo_dia = calendar.monthrange(ano, mes)[1]
-            dia = min(data_inicial.day, ultimo_dia)
-
-            vencimento = datetime(ano, mes, dia)
-
-            nova_mensalidade = Mensalidade(
-                vencimento=vencimento,
-                valor=80.0,
-                cliente_id=novo_cliente.id
-                )
-
-            db.session.add(nova_mensalidade)
-
-        db.session.commit()
+    return redirect(url_for('home'))
                  
 @app.route('/deletar/<int:id>', methods=['POST'])
 def deletar(id):

@@ -43,7 +43,7 @@ def create_app():
 
     # Cadastro de cliente
     @app.route('/cadastro-cliente', methods=['POST'])
-    def cadastro_cliente():
+    def cadastro():
         nome = request.form['nome_completo']
         cpf = request.form['cpf']
         email = request.form['email']
@@ -52,10 +52,14 @@ def create_app():
         endereco = request.form['endereco']
         numero_casa = request.form['numero_casa']
 
-        # Garantir número do dia da fatura
-
         data_inicial = datetime.strptime(request.form.get("data_inicial"), "%Y-%m-%d")
         dia_vencimento = data_inicial.day
+
+        # 🔎 VERIFICA SE EMAIL JÁ EXISTE
+        cliente_existente = Cliente.query.filter_by(email=email).first()
+
+        if cliente_existente:
+            return "Este email já está cadastrado!", 400
 
         novo_cliente = Cliente(
             nome_completo=nome,
@@ -68,10 +72,11 @@ def create_app():
             data_inicial=data_inicial,
             dia_vencimento=dia_vencimento
         )
+
         db.session.add(novo_cliente)
         db.session.commit()
 
-        # Gerar mensalidades automáticas (12 meses)
+        # Gerar mensalidades
         for i in range(12):
             ano = data_inicial.year
             mes = data_inicial.month + i

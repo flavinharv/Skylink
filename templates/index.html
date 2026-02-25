@@ -56,7 +56,7 @@
             <tr>
               <th>Nome</th>
               <th>CPF</th>
-              <th>Pagamento</th>
+              <th>E-mail</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -66,7 +66,7 @@
             <tr>
               <td>{{ cliente.nome_completo }}</td>
               <td>{{ cliente.cpf }}</td>
-              <td class="status-pago">Pago</td>
+              <td class="email">{{ cliente.email }}</td>
               <td class="actions">
                 <a href="{{ url_for('editar_cliente', id=cliente.id) }}">
                   <i class='bx bx-pencil'></i>
