@@ -55,7 +55,6 @@ def create_app():
         data_inicial = datetime.strptime(request.form.get("data_inicial"), "%Y-%m-%d")
         dia_vencimento = data_inicial.day
 
-        # 🔎 VERIFICA SE EMAIL JÁ EXISTE
         cliente_existente = Cliente.query.filter_by(email=email).first()
 
         if cliente_existente:

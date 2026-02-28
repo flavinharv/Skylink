@@ -8,7 +8,7 @@ import pdfkit
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clientes.db'
-app.secret_key = "chave_super_secreta"  # necessário para session
+app.secret_key = "chave_super_secreta"  
 db.init_app(app)
 
 # ===================== LOGIN =====================
@@ -41,7 +41,7 @@ def logout():
 @app.route('/home')
 def home():
     if 'user' not in session:
-        return redirect(url_for('login'))  # protege a home
+        return redirect(url_for('login')) 
 
     busca = request.args.get('busca')
     if busca:
@@ -151,7 +151,12 @@ def cadastro():
     dia_vencimento = data_inicial.day
 
     if Cliente.query.filter_by(email=email).first():
-        return "Este email já está cadastrado!", 400
+        flash("Este email já está cadastrado!", "danger")
+        return redirect(url_for('home'))
+
+    if Cliente.query.filter_by(cpf=cpf).first():
+        flash("Este CPF já está cadastrado!", "danger")
+        return redirect(url_for('home'))
 
     novo_cliente = Cliente(
         nome_completo=nome,
@@ -171,17 +176,29 @@ def cadastro():
     for i in range(12):
         ano = data_inicial.year
         mes = data_inicial.month + i
+
         while mes > 12:
             mes -= 12
             ano += 1
+
         ultimo_dia = calendar.monthrange(ano, mes)[1]
         dia = min(dia_vencimento, ultimo_dia)
+
         vencimento = datetime(ano, mes, dia)
-        nova_mensalidade = Mensalidade(vencimento=vencimento, valor=80.0, cliente_id=novo_cliente.id)
+
+        nova_mensalidade = Mensalidade(
+            vencimento=vencimento,
+            valor=80.0,
+            cliente_id=novo_cliente.id
+        )
+
         db.session.add(nova_mensalidade)
 
     db.session.commit()
+
+    flash("Cliente cadastrado com sucesso!", "success")
     return redirect(url_for('home'))
+
 
 @app.route('/deletar/<int:id>', methods=['POST'])
 def deletar(id):
